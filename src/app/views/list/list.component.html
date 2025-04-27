@@ -1,4 +1,6 @@
-<div *ngFor="let todo of todos">
-    <h3>{{ todo.title }}</h3>
-    <p>{{ todo }}</p>
+<div *ngFor="let todo of todos" class="flex flex-row justify-between">
+    <span>{{ todo.Done }}</span>
+    <span>{{ todo.Id }}</span>
+    <h3>{{ todo.Name }}</h3>
+    <span>{{ todo.Created }}</span>
 </div>
