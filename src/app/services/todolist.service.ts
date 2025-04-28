@@ -16,4 +16,8 @@ export class TodolistService {
     return this.http.get(`${this.baseUrl}/todolist`);
   }
 
+  // PUT: Update a todo
+  updateTodo(todo: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/todolist/${todo.Id}`, todo);
+  }
 }
