@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TodolistService } from '../../services/todolist.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TodoFormComponent } from '../../components/todo-form/todo-form.component';
 import { TodoItemComponent } from '../../components/todo-item/todo-item.component';
+import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-list',
   standalone: true,
@@ -11,15 +13,29 @@ import { TodoItemComponent } from '../../components/todo-item/todo-item.componen
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
 
   todos: any[] = [];
   showTodoForm = false;
+  private todosSubscription: Subscription | null = null;
 
   constructor(private todolistService: TodolistService) { }
 
   ngOnInit(): void {
     this.loadTodos();
+    
+    // Subscribe to the todos observable to get real-time updates
+    this.todosSubscription = this.todolistService.getTodosAsObservable().subscribe(todos => {
+      this.todos = todos;
+      console.log('Todos updated from observable:', this.todos);
+    });
+  }
+  
+  ngOnDestroy(): void {
+    // Clean up subscription when component is destroyed
+    if (this.todosSubscription) {
+      this.todosSubscription.unsubscribe();
+    }
   }
 
   loadTodos(): void {
@@ -55,7 +71,7 @@ export class ListComponent implements OnInit {
     const todo = {
       ...todoData,
       Id: this.generateUniqueId(),
-      Created: Date.now() // Current timestamp
+      Created: new Date().toISOString() // ISO string format for dates
     };
 
     // Add the todo via the service

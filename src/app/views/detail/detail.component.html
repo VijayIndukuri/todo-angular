@@ -4,19 +4,19 @@
 </div>
 <div class="grid grid-cols-4 gap-4 text-lg">
     <div class="">
-        <span class="font-bold align-right">Id </span>
+        <span class="font-bold align-right mr-2">Id </span>
         <span class=""> {{todo?.Id}}</span>
     </div>
     <div class="">
-        <span class="font-bold align-right">Expenses </span>
-        <span class=""> {{todo?.Expenses}}</span>
+        <span class="font-bold align-right mr-2">Expenses </span>
+        <span class=""> {{formatExpenses(todo?.Expenses)}}</span>
     </div>
     <div>
-        <span class="font-bold align-right">Created date </span>
+        <span class="font-bold align-right mr-2">Created date </span>
         <span class="" [ngClass]="{'px-2 py-1 bg-red-500 text-white rounded': isInvalidDate(todo?.Created)}"> {{getCreatedDate(todo?.Created)}}</span>
     </div>
     <div>
-        <span class="font-bold align-right">Days old </span>
+        <span class="font-bold align-right mr-2">Days old </span>
         <span class="" [ngClass]="{'px-2 py-1 bg-red-500 text-white rounded': isInvalidDate(todo?.Created)}"> {{getDaysOld(todo?.Created)}}</span>
     </div>
 </div>

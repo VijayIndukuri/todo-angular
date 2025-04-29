@@ -62,4 +62,12 @@ export class DetailComponent implements OnInit {
     const todoDate = new Date(date);
     return isNaN(todoDate.getTime());
   }
+
+  formatExpenses(expenses: number): string {
+    // Use the toLocaleString method to format with thousand separators
+    return expenses.toLocaleString('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+  }
 }

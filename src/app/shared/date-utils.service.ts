@@ -11,7 +11,7 @@ export class DateUtilsService {
     const todoDate = new Date(date);
     return isNaN(todoDate.getTime()) 
       ? 'Invalid date' 
-      : todoDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'numeric', year: 'numeric' });
+      : todoDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
   }
   
   getDaysOld(date: string): number | string {
