@@ -25,7 +25,9 @@
             <span>Created date</span>
         </div>
     </div>
-    <app-todo-item *ngFor="let todo of todos" [todo]="todo"></app-todo-item>
+    @for(todo of todos; track todo.Id) {
+        <app-todo-item [todo]="todo"></app-todo-item>
+    }
 </div>
 
 <!-- Todo Form Modal -->
