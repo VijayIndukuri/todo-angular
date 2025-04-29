@@ -1,1 +1,26 @@
-<p class="text-3xl font-bold underline">detail works!</p>
+<div class="flex flex-col text-lg">
+    <div class="my-4"> <span class="font-bold mr-4">{{todo?.Name}} </span> <span class="text-white border px-2 py-2 rounded-md font-bold text-sm" [style.backgroundColor]="todo?.Done ? 'green' : 'red'">{{todo?.Done ? 'Todo is done' : 'Todo is pending'}}</span></div>
+    <span class="mb-16"> {{todo?.Description}}</span>
+</div>
+<div class="grid grid-cols-4 gap-4 text-lg">
+    <div class="">
+        <span class="font-bold align-right">Id </span>
+        <span class=""> {{todo?.Id}}</span>
+    </div>
+    <div class="">
+        <span class="font-bold align-right">Expenses </span>
+        <span class=""> {{todo?.Expenses}}</span>
+    </div>
+    <div>
+        <span class="font-bold align-right">Created date </span>
+        <span class=""> {{getCreatedDate(todo?.Created)}}</span>
+    </div>
+    <div>
+        <span class="font-bold align-right">Days old </span>
+        <span class=""> {{getDaysOld(todo?.Created)}}</span>
+    </div>
+</div>
+
+<div class="flex mt-auto pt-16">
+    <button class="mx-2 my-8 cursor-pointer" (click)="goBack()">Go Back</button>
+</div>
