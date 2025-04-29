@@ -17,3 +17,10 @@ html, body {
 * {
   box-sizing: border-box;
 }
+
+@layer utilities {
+  .text-xxs {
+    font-size: 0.65rem; /* 10px */
+    line-height: 0.75rem; /* 12px */
+  }
+}
