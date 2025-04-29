@@ -13,11 +13,11 @@
     </div>
     <div>
         <span class="font-bold align-right">Created date </span>
-        <span class=""> {{getCreatedDate(todo?.Created)}}</span>
+        <span class="" [ngClass]="{'px-2 py-1 bg-red-500 text-white rounded': isInvalidDate(todo?.Created)}"> {{getCreatedDate(todo?.Created)}}</span>
     </div>
     <div>
         <span class="font-bold align-right">Days old </span>
-        <span class=""> {{getDaysOld(todo?.Created)}}</span>
+        <span class="" [ngClass]="{'px-2 py-1 bg-red-500 text-white rounded': isInvalidDate(todo?.Created)}"> {{getDaysOld(todo?.Created)}}</span>
     </div>
 </div>
 

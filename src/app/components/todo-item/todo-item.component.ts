@@ -38,4 +38,9 @@ export class TodoItemComponent {
   getFormattedDate(date: string): string {
     return this.dateUtils.getFormattedDate(date);
   }
+
+  isInvalidDate(date: string): boolean {
+    const todoDate = new Date(date);
+    return isNaN(todoDate.getTime());
+  }
 }

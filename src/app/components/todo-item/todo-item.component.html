@@ -15,5 +15,5 @@
     </div> 
     <span>{{ todo.Id }}</span>
     <span class="col-span-3 text-purple"><div class="inline-block border border-gray-300 px-4 py-1 rounded-md font-bold">{{ todo.Name }}</div></span>
-    <span class="col-span-1">{{ getFormattedDate(todo.Created) }}</span>
+    <span class="col-span-1"><div class="inline-block px-4 py-1" [ngClass]="{'bg-red-500 text-white rounded': isInvalidDate(todo.Created)}">{{ getFormattedDate(todo.Created) }}</div></span>
 </div>

@@ -57,4 +57,9 @@ export class DetailComponent implements OnInit {
   getDaysOld(date: string): number | string {
     return this.dateUtils.getDaysOld(date);
   }
+
+  isInvalidDate(date: string): boolean {
+    const todoDate = new Date(date);
+    return isNaN(todoDate.getTime());
+  }
 }
