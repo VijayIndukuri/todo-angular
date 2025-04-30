@@ -1,0 +1,6 @@
+/* Tailwind directives for Storybook */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add additional Storybook-specific styles here if needed */ 

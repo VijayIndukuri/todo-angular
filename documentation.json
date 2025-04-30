@@ -1,0 +1,1392 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [
+        {
+            "name": "DateUtilsService",
+            "id": "injectable-DateUtilsService-ab2999d4d1e2e47e2b2c69d1a6d6fc12c8cf87063dad3965b908420ddef3438a683b588e1a32fff056892db76eadc469eb14cee6bee95f35f2079fcfbc777c40",
+            "file": "src/app/shared/date-utils.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getDaysOld",
+                    "args": [
+                        {
+                            "name": "date",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number | string",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "date",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getFormattedDate",
+                    "args": [
+                        {
+                            "name": "date",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 10,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "date",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class DateUtilsService {\n  \n  constructor() { }\n  \n  getFormattedDate(date: string): string {\n    const todoDate = new Date(date);\n    return isNaN(todoDate.getTime()) \n      ? 'Invalid date' \n      : todoDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });\n  }\n  \n  getDaysOld(date: string): number | string {\n    const todoDate = new Date(date);\n    if (isNaN(todoDate.getTime())) {\n      return 'Invalid date';\n    }\n    \n    const currentDate = new Date();\n    const diffTime = Math.abs(currentDate.getTime() - todoDate.getTime());\n    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));\n    \n    return diffDays;\n  }\n} ",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 6
+            },
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "TodolistService",
+            "id": "injectable-TodolistService-3f806eca8f0627fd6d48775237f743f98928edbfb2fea08c339af83fd26f5286f8964fab384b59a76b96cce0e3ae0d4743e4981cd04b7d347478a6c677a57a3d",
+            "file": "src/app/services/todolist.service.ts",
+            "properties": [
+                {
+                    "name": "baseUrl",
+                    "defaultValue": "'https://boyumcodechallenge.azurewebsites.net/api'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "todosStore",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "todosSubject",
+                    "defaultValue": "new BehaviorSubject<any[]>([])",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "addTodo",
+                    "args": [
+                        {
+                            "name": "todo",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any>",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "todo",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getTodoById",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any>",
+                    "typeParameters": [],
+                    "line": 60,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getTodos",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Observable<any[]>",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "getTodosAsObservable",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Observable<any[]>",
+                    "typeParameters": [],
+                    "line": 56,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "updateTodo",
+                    "args": [
+                        {
+                            "name": "todo",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any>",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "todo",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient } from '@angular/common/http';\nimport { Observable, of, BehaviorSubject } from 'rxjs';\nimport { tap } from 'rxjs/operators';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class TodolistService {\n\n  private baseUrl = 'https://boyumcodechallenge.azurewebsites.net/api'; // example API\n  private todosSubject = new BehaviorSubject<any[]>([]);\n  private todosStore: any[] = [];\n\n  constructor(private http: HttpClient) { }\n\n  // GET: Fetch all posts\n  getTodos(): Observable<any[]> {\n    // If we already have data, return it from the store\n    if (this.todosStore.length > 0) {\n      return of(this.todosStore);\n    }\n\n    // Otherwise fetch from API\n    return this.http.get<any[]>(`${this.baseUrl}/todolist`).pipe(\n      tap(todos => {\n        this.todosStore = todos;\n        this.todosSubject.next([...this.todosStore]);\n      })\n    );\n  }\n\n  // Update a todo in memory (no HTTP request)\n  updateTodo(todo: any): Observable<any> {\n    // Find and update the todo in our local store\n    const index = this.todosStore.findIndex(t => t.Id === todo.Id);\n    if (index !== -1) {\n      this.todosStore[index] = {...todo};\n      this.todosSubject.next([...this.todosStore]);\n    }\n    // Return the updated todo as an observable\n    return of(todo);\n  }\n\n  // Add a new todo to the in-memory store\n  addTodo(todo: any): Observable<any> {\n    // Add the new todo to our local store\n    this.todosStore = [...this.todosStore, todo];\n    this.todosSubject.next([...this.todosStore]);\n    \n    // Return the new todo as an observable\n    return of(todo);\n  }\n\n  // Get the todos as an observable that components can subscribe to\n  getTodosAsObservable(): Observable<any[]> {\n    return this.todosSubject.asObservable();\n  }\n\n  getTodoById(id: number): Observable<any> {\n    const todo = this.todosStore.find(t => t.Id === id);\n    return of(todo);\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 13,
+                "jsdoctags": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "type": "injectable"
+        }
+    ],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-07bc76a0dfa3fd1f595f4ec73c66337e9285fb566799ae252a0b2f065a618fc2a8340b4916d0bd535983bf3bd2f5e79b8786a48ad7493028c3e25fe22e01021c",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'todo-angular'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "RouterOutlet"
+                },
+                {
+                    "name": "HeaderComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "FooterComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\nimport { HeaderComponent } from './shared/header/header.component';\nimport { FooterComponent } from './shared/footer/footer.component';\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [RouterOutlet, HeaderComponent, FooterComponent],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.css'\n})\nexport class AppComponent {\n  title = 'todo-angular';\n}\n",
+            "styleUrl": "./app.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"flex flex-col min-h-screen\">\n  <app-header></app-header>\n  <main class=\"flex-1 p-4\">\n    <router-outlet />\n  </main>\n  <app-footer></app-footer>\n</div>\n"
+        },
+        {
+            "name": "DetailComponent",
+            "id": "component-DetailComponent-5b87c4fbcb5cac9b3ce87a50ba1ad66e6481dba87d08067d563693a48f356fb89893f84d2bcf0a0ce1683266f0529e1ee7c086a2a1fd5bbe609345dac2b410a6",
+            "file": "src/app/views/detail/detail.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-detail",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./detail.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "todo",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "formatExpenses",
+                    "args": [
+                        {
+                            "name": "expenses",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 66,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "expenses",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getCreatedDate",
+                    "args": [
+                        {
+                            "name": "date",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "date",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getDaysOld",
+                    "args": [
+                        {
+                            "name": "date",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number | string",
+                    "typeParameters": [],
+                    "line": 57,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "date",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "goBack",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "isInvalidDate",
+                    "args": [
+                        {
+                            "name": "date",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 61,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "date",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "loadTodo",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Location } from '@angular/common';\nimport { TodolistService } from '../../services/todolist.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { CommonModule } from '@angular/common';\nimport { DateUtilsService } from '../../shared/date-utils.service';\n\n@Component({\n  selector: 'app-detail',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './detail.component.html',\n  styleUrl: './detail.component.css'\n})\nexport class DetailComponent implements OnInit {\n  constructor(\n    private location: Location, \n    private todolistService: TodolistService,\n    private route: ActivatedRoute,\n    private dateUtils: DateUtilsService\n  ) {}\n\n  todo: any;\n\n  ngOnInit() {\n    this.loadTodo();\n  }\n\n  loadTodo() {\n    // Get the id parameter from the route\n    const id = Number(this.route.snapshot.paramMap.get('id'));\n    \n    // Subscribe to the Observable returned by getTodoById\n    this.todolistService.getTodoById(id).subscribe(data => {\n      this.todo = data;\n      \n      // If todo is empty/null, try to refresh data from the service\n      if (!this.todo) {\n        this.todolistService.getTodos().subscribe(() => {\n          // Try getting the todo again after refreshing the list\n          this.todolistService.getTodoById(id).subscribe(refreshedData => {\n            this.todo = refreshedData;\n          });\n        });\n      }\n    });\n  }\n\n  goBack() {\n    this.location.back();\n  }\n  \n  getCreatedDate(date: string): string {\n    return this.dateUtils.getFormattedDate(date);\n  }\n  \n  getDaysOld(date: string): number | string {\n    return this.dateUtils.getDaysOld(date);\n  }\n\n  isInvalidDate(date: string): boolean {\n    const todoDate = new Date(date);\n    return isNaN(todoDate.getTime());\n  }\n\n  formatExpenses(expenses: number): string {\n    // Use the toLocaleString method to format with thousand separators\n    return expenses.toLocaleString('en-US', {\n      minimumFractionDigits: 2,\n      maximumFractionDigits: 2\n    });\n  }\n}\n",
+            "styleUrl": "./detail.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "location",
+                        "type": "Location",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "todolistService",
+                        "type": "TodolistService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "dateUtils",
+                        "type": "DateUtilsService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 15,
+                "jsdoctags": [
+                    {
+                        "name": "location",
+                        "type": "Location",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "todolistService",
+                        "type": "TodolistService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "dateUtils",
+                        "type": "DateUtilsService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"flex flex-col text-base md:text-lg p-4 md:p-0\">\n    <div class=\"my-2 md:my-4 flex flex-col md:flex-row md:items-center gap-2 md:gap-4\"> \n        <span class=\"font-bold text-lg md:text-xl\">{{todo?.Name}}</span> \n        <span class=\"text-white border px-2 py-1 md:py-2 rounded-md font-bold text-xs md:text-sm inline-block w-max\" [style.backgroundColor]=\"todo?.Done ? 'green' : 'red'\">{{todo?.Done ? 'Todo is done' : 'Todo is pending'}}</span>\n    </div>\n    <span class=\"mb-6 md:mb-16\"> {{todo?.Description}}</span>\n</div>\n<div class=\"grid grid-cols-1 md:grid-cols-8 gap-3 md:gap-4 text-sm md:text-lg p-4 md:p-0 max-w-4xl\">\n    <div class=\"flex items-center\">\n        <span class=\"font-bold mr-3\">Id </span>\n        <span class=\"\"> {{todo?.Id}}</span>\n    </div>\n    <div class=\"flex items-center md:col-span-2\">\n        <span class=\"font-bold mr-3\">Expenses </span>\n        <span class=\"\"> {{formatExpenses(todo?.Expenses)}}</span>\n    </div>\n    <div class=\"flex items-center md:col-span-3\">\n        <span class=\"font-bold mr-3\">Created date</span>\n        <span class=\"\" [ngClass]=\"{'px-1 md:px-2 py-0.5 md:py-1 bg-red-500 text-white rounded text-xs md:text-sm': isInvalidDate(todo?.Created)}\"> {{getCreatedDate(todo?.Created)}}</span>\n    </div>\n    <div class=\"flex items-center md:col-span-2\">\n        <span class=\"font-bold mr-3\">Days old </span>\n        <span class=\"\" [ngClass]=\"{'px-1 md:px-2 py-0.5 md:py-1 bg-red-500 text-white rounded text-xs md:text-sm': isInvalidDate(todo?.Created)}\"> {{getDaysOld(todo?.Created)}}</span>\n    </div>\n</div>\n\n<div class=\"flex mt-auto pt-6 md:pt-16 p-4 md:p-0\">\n    <button class=\"px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-md\" (click)=\"goBack()\">Go Back</button>\n</div>"
+        },
+        {
+            "name": "FooterComponent",
+            "id": "component-FooterComponent-7d2e5e69512a0634b7e027ce1fbd7a7f7973dd2e20be74142ff11b6f608d278910319010e8b369766a6ec2807cb7847cd729180c4e3973552ae6bd4253548e08",
+            "file": "src/app/shared/footer/footer.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-footer",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./footer.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-footer',\n  standalone: true,\n  imports: [],\n  templateUrl: './footer.component.html',\n  styleUrl: './footer.component.css'\n})\nexport class FooterComponent {\n\n}\n",
+            "styleUrl": "./footer.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<footer class=\"w-full bg-gray-100 border-t border-gray-200\">\n  <div class=\"container mx-auto px-4 py-4 text-center\">\n    <p class=\"text-sm text-gray-600\">&copy; 2025 Todo App. All rights reserved.</p>\n  </div>\n</footer>\n"
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-0d5723ba1157487b7b12ed67c41eaad1231f92055b3fd037d3ef53b56f2979903473e34956526cf36783b58f6d12de45dd76931d59604af9e8691bdfa13d987d",
+            "file": "src/app/shared/header/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-header",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./header.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-header',\n  standalone: true,\n  imports: [],\n  templateUrl: './header.component.html',\n  styleUrl: './header.component.css'\n})\nexport class HeaderComponent {\n\n}\n",
+            "styleUrl": "./header.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<header class=\"w-full bg-blue-600 text-white shadow-md sticky top-0 z-50\">\n  <div class=\"container mx-auto px-4 py-4\">\n    <h1 class=\"text-xl font-medium\">Todo App</h1>\n  </div>\n</header>\n"
+        },
+        {
+            "name": "ListComponent",
+            "id": "component-ListComponent-071e96b6f42f1fad1482bb0fef8582ce2686519c96b163a639380de1f4816ec4867dd86a6e3466c1202076c50d3ae97de7e1a6b0533f454bd2010841eae59470",
+            "file": "src/app/views/list/list.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-list",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./list.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "showTodoForm",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "todos",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "todosSubscription",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Subscription | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "closeTodoForm",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 65,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "generateUniqueId",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 85,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "loadTodos",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "openTodoForm",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 61,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "saveTodo",
+                    "args": [
+                        {
+                            "name": "todoData",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 69,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "todoData",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggleTodo",
+                    "args": [
+                        {
+                            "name": "todo",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "todo",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "TodoFormComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "TodoItemComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, OnDestroy } from '@angular/core';\nimport { TodolistService } from '../../services/todolist.service';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule } from '@angular/forms';\nimport { TodoFormComponent } from '../../components/todo-form/todo-form.component';\nimport { TodoItemComponent } from '../../components/todo-item/todo-item.component';\nimport { Subscription } from 'rxjs';\n\n@Component({\n  selector: 'app-list',\n  standalone: true,\n  imports: [CommonModule, FormsModule, TodoFormComponent, TodoItemComponent],\n  templateUrl: './list.component.html',\n  styleUrl: './list.component.css'\n})\nexport class ListComponent implements OnInit, OnDestroy {\n\n  todos: any[] = [];\n  showTodoForm = false;\n  private todosSubscription: Subscription | null = null;\n\n  constructor(private todolistService: TodolistService) { }\n\n  ngOnInit(): void {\n    this.loadTodos();\n    \n    // Subscribe to the todos observable to get real-time updates\n    this.todosSubscription = this.todolistService.getTodosAsObservable().subscribe(todos => {\n      this.todos = todos;\n      console.log('Todos updated from observable:', this.todos);\n    });\n  }\n  \n  ngOnDestroy(): void {\n    // Clean up subscription when component is destroyed\n    if (this.todosSubscription) {\n      this.todosSubscription.unsubscribe();\n    }\n  }\n\n  loadTodos(): void {\n    this.todolistService.getTodos().subscribe((todos) => {\n      this.todos = todos;\n      console.log(this.todos);\n    });\n  }\n  \n  toggleTodo(todo: any): void {\n    // Create a copy with the Done property toggled\n    const updatedTodo = { \n      ...todo, \n      Done: !todo.Done \n    };\n    \n    // Update via the service (now in-memory)\n    this.todolistService.updateTodo(updatedTodo).subscribe(() => {\n      console.log('Todo updated successfully');\n    });\n  }\n\n  openTodoForm(): void {\n    this.showTodoForm = true;\n  }\n\n  closeTodoForm(): void {\n    this.showTodoForm = false;\n  }\n\n  saveTodo(todoData: any): void {\n    // Create a new todo with the current date and a unique ID\n    const todo = {\n      ...todoData,\n      Id: this.generateUniqueId(),\n      Created: new Date().toISOString() // ISO string format for dates\n    };\n\n    // Add the todo via the service\n    this.todolistService.addTodo(todo).subscribe(() => {\n      console.log('Todo added successfully');\n      this.closeTodoForm();\n    });\n  }\n\n  // Generate a simple unique ID (for in-memory usage)\n  private generateUniqueId(): number {\n    if (this.todos.length === 0) {\n      return 1;\n    }\n    // Find the maximum ID and add 1\n    return Math.max(...this.todos.map(todo => todo.Id)) + 1;\n  }\n}\n",
+            "styleUrl": "./list.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "todolistService",
+                        "type": "TodolistService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 20,
+                "jsdoctags": [
+                    {
+                        "name": "todolistService",
+                        "type": "TodolistService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit",
+                "OnDestroy"
+            ],
+            "templateData": "<div class=\"mt-4 md:mt-10 mr-2 md:mx-20 my-4 md:my-10\">\n    <div class=\"flex flex-col md:flex-row md:justify-between items-start md:items-center mb-4 md:mb-8\">\n        <div class=\"text-xl md:text-2xl font-bold pl-2 md:pl-4 mb-3 md:mb-0\">List</div>\n        <button \n            (click)=\"openTodoForm()\" \n            class=\"flex items-center gap-2 bg-blue-600 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2\">\n            <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4 md:h-5 md:w-5\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n                <path fill-rule=\"evenodd\" d=\"M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z\" clip-rule=\"evenodd\" />\n            </svg>\n            Add Todo\n        </button>\n    </div>\n    \n    <div class=\"grid grid-cols-6 gap-2 md:gap-4 text-sm md:text-lg mb-2 pr-2 md:pl-4\">\n        <div class=\"col-span-1\">\n            <span>Done</span>\n        </div>\n        <div class=\"col-span-1\">\n            <span>Id</span>\n        </div>\n        <div class=\"col-span-3\">\n            <span>Name</span>\n        </div>\n        <div class=\"col-span-1 px-2\">\n            <span>Created date</span>\n        </div>\n    </div>\n    @for(todo of todos; track todo.Id) {\n        <app-todo-item [todo]=\"todo\"></app-todo-item>\n    }\n</div>\n\n<!-- Todo Form Modal -->\n<app-todo-form \n    [isVisible]=\"showTodoForm\" \n    (close)=\"closeTodoForm()\" \n    (save)=\"saveTodo($event)\">\n</app-todo-form>"
+        },
+        {
+            "name": "TodoFormComponent",
+            "id": "component-TodoFormComponent-13bf727eedf76451519daaeddbc6a43dd9ce9ac00e22b41ff860194e5a24c19c7585705d071ed4b17c4879d64582e39181ed0691d73f7202f10acf6865d8fa96",
+            "file": "src/app/components/todo-form/todo-form.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-todo-form",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./todo-form.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "isVisible",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "close",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "save",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "todo",
+                    "defaultValue": "{\n    Name: '',\n    Description: '',\n    Done: false,\n    Expenses: 0\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onCancel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "resetForm",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule } from '@angular/forms';\n\n@Component({\n  selector: 'app-todo-form',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  templateUrl: './todo-form.component.html',\n  styleUrl: './todo-form.component.css'\n})\nexport class TodoFormComponent implements OnInit {\n  @Input() isVisible = false;\n  @Output() close = new EventEmitter<void>();\n  @Output() save = new EventEmitter<any>();\n\n  todo: any = {\n    Name: '',\n    Description: '',\n    Done: false,\n    Expenses: 0\n  };\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n  onSubmit(): void {\n    if (!this.todo.Name.trim()) {\n      return; // Don't add empty todos\n    }\n\n    this.save.emit(this.todo);\n    this.resetForm();\n  }\n\n  onCancel(): void {\n    this.close.emit();\n    this.resetForm();\n  }\n\n  private resetForm(): void {\n    this.todo = {\n      Name: '',\n      Description: '',\n      Done: false,\n      Expenses: 0\n    };\n  }\n}\n",
+            "styleUrl": "./todo-form.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 22
+            },
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<!-- Modal Overlay -->\n@if(isVisible){ \n<div class=\"fixed inset-0 bg-black/40 z-40 flex items-center justify-center p-4\">\n  <!-- Modal Content -->\n  <div class=\"bg-white rounded-lg shadow-xl w-full max-w-md z-50 overflow-hidden\" (click)=\"$event.stopPropagation()\">\n    <!-- Modal Header -->\n    <div class=\"bg-blue-600 text-white px-4 md:px-6 py-3 md:py-4 flex justify-between items-center\">\n      <h3 class=\"text-base md:text-lg font-medium\">Add New Todo</h3>\n      <button \n        (click)=\"onCancel()\" \n        class=\"text-white hover:text-gray-300 focus:outline-none\"\n        aria-label=\"Close\">\n        <svg class=\"h-5 w-5 md:h-6 md:w-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\">\n          <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M6 18L18 6M6 6l12 12\"></path>\n        </svg>\n      </button>\n    </div>\n\n    <!-- Modal Body -->\n    <div class=\"p-4 md:p-6\">\n      <form (ngSubmit)=\"onSubmit()\" class=\"space-y-3 md:space-y-4\">\n        <!-- Task Name -->\n        <div>\n          <label for=\"todoName\" class=\"block text-xs md:text-sm font-medium text-gray-700 mb-1\">Task Name *</label>\n          <input \n            type=\"text\" \n            id=\"todoName\" \n            name=\"todoName\" \n            [(ngModel)]=\"todo.Name\"\n            class=\"w-full px-3 py-2 text-sm md:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500\" \n            placeholder=\"Enter task name\"\n            required>\n        </div>\n\n        <!-- Description -->\n        <div>\n          <label for=\"todoDescription\" class=\"block text-xs md:text-sm font-medium text-gray-700 mb-1\">Description</label>\n          <textarea \n            id=\"todoDescription\" \n            name=\"todoDescription\" \n            [(ngModel)]=\"todo.Description\"\n            rows=\"3\"\n            class=\"w-full px-3 py-2 text-sm md:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500\" \n            placeholder=\"Enter description\"></textarea>\n        </div>\n\n        <!-- Expenses -->\n        <div>\n          <label for=\"todoExpenses\" class=\"block text-xs md:text-sm font-medium text-gray-700 mb-1\">Expenses</label>\n          <input \n            type=\"number\" \n            id=\"todoExpenses\" \n            name=\"todoExpenses\" \n            [(ngModel)]=\"todo.Expenses\"\n            class=\"w-full px-3 py-2 text-sm md:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500\" \n            placeholder=\"0.00\"\n            step=\"0.01\"\n            min=\"0\">\n        </div>\n\n        <!-- Done Status -->\n         \n        <div class=\"inline-flex items-center\">\n            <label class=\"flex items-center cursor-pointer relative\">\n                <input type=\"checkbox\" \n                    id=\"todoDone\" \n                    name=\"todoDone\" \n                    [(ngModel)]=\"todo.Done\"\n                    class=\"peer h-4 w-4 md:h-5 md:w-5 cursor-pointer transition-all appearance-none rounded shadow hover:shadow-md border border-slate-300 checked:bg-purple checked:border-purple\" />\n                <span class=\"absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none\">\n                <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-3 w-3 md:h-3.5 md:w-3.5\" viewBox=\"0 0 20 20\" fill=\"currentColor\" stroke=\"currentColor\" stroke-width=\"1\">\n                    <path fill-rule=\"evenodd\" d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\" clip-rule=\"evenodd\"></path>\n                </svg>\n                </span>\n            </label>\n            <label for=\"todoDone\" class=\"ml-2 block text-xs md:text-sm font-medium text-gray-700\">Mark as done</label>\n        </div> \n\n        <!-- Form Actions -->\n        <div class=\"flex justify-end gap-2 md:gap-3 pt-3 md:pt-4\">\n          <button \n            type=\"button\" \n            (click)=\"onCancel()\"\n            class=\"px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2\">\n            Cancel\n          </button>\n          <button \n            type=\"submit\" \n            class=\"px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2\">\n            Save\n          </button>\n        </div>\n      </form>\n    </div>\n  </div>\n</div>\n}"
+        },
+        {
+            "name": "TodoItemComponent",
+            "id": "component-TodoItemComponent-0d84a1a302d7672706bba102d8d38650329483075e7fde3544cec9ccda769361a5023fea98570126533366c7a3033c1f6b3f0101feae7952bfe4edaaf58a4e10",
+            "file": "src/app/components/todo-item/todo-item.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-todo-item",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./todo-item.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "todo",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "any",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "getFormattedDate",
+                    "args": [
+                        {
+                            "name": "date",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "date",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isInvalidDate",
+                    "args": [
+                        {
+                            "name": "date",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "date",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "todoDetail",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "toggleTodo",
+                    "args": [
+                        {
+                            "name": "todo",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "todo",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { Router } from '@angular/router';\nimport { DateUtilsService } from '../../shared/date-utils.service';\n\n@Component({\n  selector: 'app-todo-item',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './todo-item.component.html',\n  styleUrl: './todo-item.component.css'\n})\nexport class TodoItemComponent {\n  constructor(\n    private router: Router,\n    private dateUtils: DateUtilsService\n  ) {}\n  \n  @Input() todo!: any;\n  \n  toggleTodo(todo: any): void {\n    // Create a copy with the Done property toggled\n    const updatedTodo = { \n      ...todo, \n      Done: !todo.Done \n    };\n    \n    // Update via the service (now in-memory)\n    /*this.todolistService.updateTodo(updatedTodo).subscribe(() => {\n      console.log('Todo updated successfully');\n    });*/\n  }\n  \n  todoDetail(): void {\n    this.router.navigate(['/detail', this.todo.Id]);\n  }\n  \n  getFormattedDate(date: string): string {\n    return this.dateUtils.getFormattedDate(date);\n  }\n\n  isInvalidDate(date: string): boolean {\n    const todoDate = new Date(date);\n    return isNaN(todoDate.getTime());\n  }\n}\n",
+            "styleUrl": "./todo-item.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "dateUtils",
+                        "type": "DateUtilsService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 13,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "dateUtils",
+                        "type": "DateUtilsService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<div class=\"grid grid-cols-6 gap-2 md:gap-4 py-2 cursor-pointer pr-2 md:pl-4 hover:border hover:border-gray-200 items-center\" (click)=\"todoDetail()\">\n    <div class=\"inline-flex items-center\">\n        <label class=\"flex items-center cursor-pointer relative\">\n            <input type=\"checkbox\" \n                   [checked]=\"todo.Done\" \n                   (change)=\"toggleTodo(todo)\" \n                   (click)=\"$event.stopPropagation()\"\n                   class=\"peer h-4 w-4 md:h-5 md:w-5 cursor-pointer transition-all appearance-none rounded shadow hover:shadow-md border border-slate-300 checked:bg-purple checked:border-purple\" />\n            <span class=\"absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none\">\n            <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-3 w-3 md:h-3.5 md:w-3.5\" viewBox=\"0 0 20 20\" fill=\"currentColor\" stroke=\"currentColor\" stroke-width=\"1\">\n                <path fill-rule=\"evenodd\" d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\" clip-rule=\"evenodd\"></path>\n            </svg>\n            </span>\n        </label>\n    </div> \n    <span class=\"col-span-1 flex items-center\">{{ todo.Id }}</span>\n    <span class=\"col-span-3 md:col-span-3 text-purple flex items-center\"><div class=\"inline-block border border-gray-300 px-2 py-0.5 md:px-4 md:py-1 rounded-md font-bold text-sm md:text-base\">{{ todo.Name }}</div></span>\n    <span class=\"col-span-1 flex items-center\"><div class=\"inline-block px-1 py-0.5 md:px-4 md:py-1 text-xxs md:text-base\" [ngClass]=\"{'bg-red-500 text-white text-xs md:text-sm rounded': isInvalidDate(todo.Created)}\">{{ getFormattedDate(todo.Created) }}</div></span>\n</div>\n"
+        }
+    ],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "appConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.config.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ApplicationConfig",
+                "defaultValue": "{\n  providers: [provideRouter(routes), provideHttpClient()]\n}"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/app/app.config.ts": [
+                {
+                    "name": "appConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.config.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApplicationConfig",
+                    "defaultValue": "{\n  providers: [provideRouter(routes), provideHttpClient()]\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "appConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/todo-form/todo-form.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TodoFormComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/todo-item/todo-item.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TodoItemComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/todolist.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "TodolistService",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/date-utils.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "DateUtilsService",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/footer/footer.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FooterComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/header/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/views/detail/detail.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DetailComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/views/list/list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ListComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/13",
+                "status": "low"
+            }
+        ]
+    }
+}

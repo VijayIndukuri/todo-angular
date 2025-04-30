@@ -1,0 +1,91 @@
+import type { StorybookConfig } from '@storybook/angular';
+import type { Configuration, RuleSetRule } from 'webpack';
+import path from 'path';
+
+const config: StorybookConfig = {
+  "stories": [
+    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+  ],
+  "addons": [
+    {
+      "name": "@storybook/addon-essentials",
+      "options": {
+        "docs": true
+      }
+    },
+    "@storybook/addon-onboarding",
+    "@storybook/addon-interactions"
+  ],
+  "framework": {
+    "name": "@storybook/angular",
+    "options": {}
+  },
+  "staticDirs": ["../src/assets"],
+  "typescript": {
+    "check": false,
+    "reactDocgen": false
+  },
+  "core": {
+    "disableTelemetry": true
+  },
+  // @ts-expect-error - Ignoring type errors in the webpack config for simplicity
+  "webpackFinal": async (config: Configuration): Promise<Configuration> => {
+    if (!config.module || !config.module.rules) {
+      return config;
+    }
+
+    // Find CSS rule safely with type narrowing
+    const rules = config.module.rules;
+    let cssRule: RuleSetRule | undefined;
+
+    // Safely iterate through rules to find CSS rules
+    for (const rule of rules) {
+      if (
+        rule && 
+        typeof rule === 'object' && 
+        'test' in rule && 
+        rule.test instanceof RegExp && 
+        rule.test.toString().includes('.css')
+      ) {
+        cssRule = rule as RuleSetRule;
+        break;
+      }
+    }
+
+    if (cssRule && 'use' in cssRule && cssRule.use) {
+      // Safely handle use property
+      const loaders = Array.isArray(cssRule.use) ? [...cssRule.use] : [cssRule.use];
+      
+      // Check if postcss-loader is already present
+      const hasPostcssLoader = loaders.some(
+        loader => 
+          typeof loader === 'object' && 
+          loader !== null &&
+          'loader' in loader && 
+          typeof loader.loader === 'string' &&
+          loader.loader.includes('postcss-loader')
+      );
+      
+      // Add postcss-loader if not present
+      if (!hasPostcssLoader) {
+        loaders.push({
+          loader: 'postcss-loader',
+          options: {
+            postcssOptions: {
+              plugins: [
+                'tailwindcss',
+                'autoprefixer',
+              ],
+            },
+          },
+        });
+        
+        cssRule.use = loaders;
+      }
+    }
+    
+    return config;
+  }
+};
+
+export default config; 
