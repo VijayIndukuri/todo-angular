@@ -28,7 +28,7 @@ describe('TodoItemComponent', () => {
         Name: 'Test Todo',
         Description: 'Test Description',
         Done: false,
-        Created: 1714418400,
+        Created: 1714541840000,
         Expenses: 123.45
     });
     fixture.detectChanges();
@@ -36,6 +36,7 @@ describe('TodoItemComponent', () => {
     // Check for ID and Name in the component
     expect(fixture.nativeElement.querySelector('#id').textContent).toContain('1');
     expect(fixture.nativeElement.querySelector('#name').textContent).toContain('Test Todo');
+    expect(fixture.nativeElement.querySelector('#created-date').textContent).toContain('05/01/2024');
   });
 
   it('should format the date correctly', () => {

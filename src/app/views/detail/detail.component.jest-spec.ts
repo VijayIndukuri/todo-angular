@@ -38,8 +38,8 @@ describe('DetailComponent', () => {
       Name: 'Test Todo',
       Description: 'Test Description',
       Done: false,
-      Created: new Date().toISOString(),
-      Expenses: 123.45
+      Created: 1618481792000,
+      Expenses: 27980.3273
     }));
     
     fixture.detectChanges();
@@ -50,5 +50,15 @@ describe('DetailComponent', () => {
     expect(component.todo).toBeDefined();
     expect(component.todo.Name).toBe('Test Todo');
     expect(component.todo.Description).toBe('Test Description');
+  });
+
+  it('should display the correct todo data', () => {
+    const createdDate: string = component.getCreatedDate(component.todo.Created);
+    const daysOld: string | number = component.getDaysOld(component.todo.Created);
+    expect(fixture.nativeElement.querySelector('#id').textContent).toContain('1');
+    //expect(fixture.nativeElement.querySelector('#name').textContent).toContain('Test Todo');
+    expect(fixture.nativeElement.querySelector('#created-date').textContent).toContain(createdDate);
+    expect(fixture.nativeElement.querySelector('#expenses').textContent).toContain('27,980.33');
+    expect(fixture.nativeElement.querySelector('#days-old').textContent).toContain(daysOld.toString());
   });
 });
