@@ -5,7 +5,7 @@ import { DetailComponent } from './detail.component';
 import { TodolistService } from '../../services/todolist.service';
 import { of } from 'rxjs';
 
-describe('DetailComponent', () => {
+describe('DetailComponent (Jest)', () => {
   let component: DetailComponent;
   let fixture: ComponentFixture<DetailComponent>;
   let todolistService: TodolistService;
@@ -33,7 +33,7 @@ describe('DetailComponent', () => {
     todolistService = TestBed.inject(TodolistService);
     
     // Mock the TodolistService to return a mock todo
-    spyOn(todolistService, 'getTodoById').and.returnValue(of({
+    jest.spyOn(todolistService, 'getTodoById').mockReturnValue(of({
       Id: 1,
       Title: 'Test Todo',
       Description: 'Test Description',
@@ -49,4 +49,4 @@ describe('DetailComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-}); 
+});
