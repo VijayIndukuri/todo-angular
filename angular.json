@@ -105,10 +105,7 @@
               "-d",
               "."
             ],
-            "port": 6006,
-            "styles": [
-              "src/styles.css"
-            ]
+            "port": 6006
           }
         },
         "build-storybook": {

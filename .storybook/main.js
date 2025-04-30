@@ -4,28 +4,30 @@ module.exports = {
   "stories": [
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
-  "addons": [
-    {
-      "name": "@storybook/addon-essentials",
-      "options": {
-        "docs": true
-      }
-    },
-    "@storybook/addon-onboarding",
-    "@storybook/addon-interactions"
-  ],
+
+  "addons": [{
+    "name": "@storybook/addon-essentials",
+    "options": {
+      "docs": true
+    }
+  }, "@storybook/addon-onboarding", "@storybook/addon-interactions", "@chromatic-com/storybook"],
+
   "framework": {
     "name": "@storybook/angular",
     "options": {}
   },
+
   "staticDirs": ["../src/assets"],
+
   "typescript": {
     "check": false,
     "reactDocgen": false
   },
+
   "core": {
     "disableTelemetry": true
   },
+
   "webpackFinal": async (config) => {
     // Add postcss-loader for Tailwind CSS
     const cssRule = config.module.rules.find(
@@ -59,5 +61,9 @@ module.exports = {
     }
     
     return config;
+  },
+
+  docs: {
+    autodocs: true
   }
 }; 
