@@ -1,57 +1,73 @@
 # Testing in Todo Angular App
 
-This project supports testing with both Jest and Karma (Jasmine). Here's how to use each testing framework.
+This project uses Jest as its testing framework.
 
-## Jest Testing
+## Commands
 
-Jest is configured as the primary test runner for this project.
+- Run all tests: `npm test`
+- Run tests in watch mode: `npm run test:watch`
+- Run tests with coverage: `npm run test:coverage`
 
-### Commands
+## File Naming Convention
 
-- Run all Jest tests: `npm test`
-- Run Jest tests in watch mode: `npm run test:watch`
-- Run Jest tests with coverage: `npm run test:coverage`
-
-### File Naming Convention
-
-Jest test files should use the following naming convention:
+Test files should use the following naming convention:
 - `*.jest-spec.ts` (e.g., `component-name.jest-spec.ts`)
 
-## Karma/Jasmine Testing
+## Writing Tests
 
-Karma with Jasmine is retained for compatibility with existing Angular test infrastructure.
+Jest provides a modern and efficient testing environment. Here's a basic example of testing a component:
 
-### Commands
-
-- Run all Karma tests: `npm run test:karma`
-- Run Karma tests with watch mode: `npm run test:karma -- --watch`
-- Run Karma tests without watch mode: `npm run test:karma -- --watch=false`
-
-### File Naming Convention
-
-Karma test files should use the standard Angular spec naming convention:
-- `*.spec.ts` (e.g., `component-name.spec.ts`)
-
-## Writing Tests for Both Frameworks
-
-If you need to maintain tests for both frameworks, create two separate test files:
-1. `component-name.spec.ts` for Karma/Jasmine
-2. `component-name.jest-spec.ts` for Jest
-
-The key differences between the frameworks are:
-1. Jest uses `jest.spyOn()` and `.mockReturnValue()` for spying
-2. Karma/Jasmine uses `spyOn()` and `.and.returnValue()` for spying
-
-Example:
 ```typescript
-// In Jest (component-name.jest-spec.ts)
-jest.spyOn(service, 'method').mockReturnValue(value);
+// In component-name.jest-spec.ts
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { YourComponent } from './your.component';
 
-// In Jasmine (component-name.spec.ts)
-spyOn(service, 'method').and.returnValue(value);
+describe('YourComponent', () => {
+  let component: YourComponent;
+  let fixture: ComponentFixture<YourComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [YourComponent, OtherDependencies]
+    }).compileComponents();
+    
+    fixture = TestBed.createComponent(YourComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+```
+
+### Mocking with Jest
+
+Jest provides powerful mocking capabilities:
+
+```typescript
+// Mocking a service
+const serviceMock = {
+  getData: jest.fn().mockReturnValue(of([{ id: 1, name: 'Test' }]))
+};
+
+TestBed.configureTestingModule({
+  providers: [
+    { provide: DataService, useValue: serviceMock }
+  ]
+});
+
+// Spying on a method
+jest.spyOn(service, 'method').mockReturnValue(mockValue);
 ```
 
 ## Test Coverage
 
-- Jest coverage reports are generated in `coverage/`
-- Karma coverage reports are generated in `coverage/karma/` 
+Jest coverage reports are generated in the `coverage/` directory when you run:
+
+```
+npm run test:coverage
+```
+
+The report includes statements, branches, functions, and lines coverage information. 

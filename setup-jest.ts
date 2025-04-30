@@ -13,22 +13,11 @@ const mock = () => {
   };
 };
 
+// Essential browser API mocks
 Object.defineProperty(window, 'localStorage', {value: mock()});
 Object.defineProperty(window, 'sessionStorage', {value: mock()});
-Object.defineProperty(window, 'getComputedStyle', {
-  value: () => ['-webkit-appearance']
-});
 
-Object.defineProperty(document.body.style, 'transform', {
-  value: () => {
-    return {
-      enumerable: true,
-      configurable: true
-    };
-  },
-});
-
-// Prevent Angular from throwing an error during test environment initialization
+// Match media mock - required for Angular Material and responsive designs
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: jest.fn().mockImplementation(query => ({
@@ -41,4 +30,17 @@ Object.defineProperty(window, 'matchMedia', {
     removeEventListener: jest.fn(),
     dispatchEvent: jest.fn(),
   }))
+});
+
+Object.defineProperty(window, 'getComputedStyle', {
+  value: () => ['-webkit-appearance']
+});
+
+Object.defineProperty(document.body.style, 'transform', {
+  value: () => {
+    return {
+      enumerable: true,
+      configurable: true
+    };
+  },
 }); 
