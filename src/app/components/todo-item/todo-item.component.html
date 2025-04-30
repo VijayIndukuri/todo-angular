@@ -13,7 +13,7 @@
             </span>
         </label>
     </div> 
-    <span class="col-span-1 flex items-center">{{ todo.Id }}</span>
-    <span class="col-span-3 md:col-span-3 text-purple flex items-center"><div class="inline-block border border-gray-300 px-2 py-0.5 md:px-4 md:py-1 rounded-md font-bold text-sm md:text-base">{{ todo.Name }}</div></span>
-    <span class="col-span-1 flex items-center"><div class="inline-block px-1 py-0.5 md:px-4 md:py-1 text-xxs md:text-base" [ngClass]="{'bg-red-500 text-white text-xs md:text-sm rounded': isInvalidDate(todo.Created)}">{{ getFormattedDate(todo.Created) }}</div></span>
+    <span id="id" class="col-span-1 flex items-center">{{ todo.Id }}</span>
+    <span id="name" class="col-span-3 md:col-span-3 text-purple flex items-center"><div class="inline-block border border-gray-300 px-2 py-0.5 md:px-4 md:py-1 rounded-md font-bold text-sm md:text-base">{{ todo.Name }}</div></span>
+    <span id="created-date" class="col-span-1 flex items-center"><div class="inline-block px-1 py-0.5 md:px-4 md:py-1 text-xxs md:text-base" [ngClass]="{'bg-red-500 text-white text-xs md:text-sm rounded': isInvalidDate(todo.Created)}">{{ getFormattedDate(todo.Created) }}</div></span>
 </div>
