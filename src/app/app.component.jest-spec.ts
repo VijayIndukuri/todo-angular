@@ -16,23 +16,15 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  it('should create the app with correct structure', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have the 'todo-angular' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
     expect(app.title).toEqual('todo-angular');
-  });
-
-  it('should render the app structure', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('app-header')).toBeTruthy();
     expect(compiled.querySelector('app-footer')).toBeTruthy();
   });
-});
+}); 

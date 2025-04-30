@@ -63,7 +63,12 @@ export class DetailComponent implements OnInit {
     return isNaN(todoDate.getTime());
   }
 
-  formatExpenses(expenses: number): string {
+  formatExpenses(expenses: number | undefined): string {
+    // Check if expenses is undefined or null
+    if (expenses === undefined || expenses === null) {
+      return '0.00';
+    }
+    
     // Use the toLocaleString method to format with thousand separators
     return expenses.toLocaleString('en-US', {
       minimumFractionDigits: 2,
